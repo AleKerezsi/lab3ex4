@@ -23,10 +23,12 @@ namespace lab3ex4
                 array[i] = int.Parse(Console.ReadLine());
             }
 
-            Console.WriteLine("Numarul maxim din sir este " + NumarMaxim(array, 8));
-            Console.WriteLine("Numarul minim din sir este " + NumarMinim(array, 8));
+            Console.WriteLine("Numarul maxim din sir este " + NumarMaxim(array, lungimeSir));
+            Console.WriteLine("Numarul minim din sir este " + NumarMinim(array, lungimeSir));
             Console.WriteLine();
-            NumereleDivizibileCu3(array, 8);
+            NumereleDivizibileCu3(array, lungimeSir);
+            Console.WriteLine();
+            VerificaToateNumerelePrime(array, lungimeSir);
         }
 
         public static int NumarMaxim(int[] sir, int lungimeSir) 
@@ -69,6 +71,29 @@ namespace lab3ex4
                 if (sir[i] % 3 == 0) Console.WriteLine("Numarul " + sir[i] + " este divizibil cu 3");
             }
 
+        }
+
+        public static void VerificaToateNumerelePrime(int[] sir, int lungimeSir)
+        {
+            for (int i = 0; i < lungimeSir; i++)
+            {
+                if (VerificaNumarPrim(sir[i]) == true) Console.WriteLine("Numarul " + sir[i] + " este prim");
+                else Console.WriteLine("Numarul " + sir[i] + " nu este prim");
+            }
+        }
+
+        public static bool VerificaNumarPrim(int x)
+        {
+            int numarDivizori = 0;
+            for (int i = 1; i <= x; i++)
+            {
+                if (x % i == 0)
+                {
+                    numarDivizori = numarDivizori + 1;
+                }
+            }
+            if (numarDivizori == 2) return true;
+            else return false;
         }
     }
 }
